@@ -20,6 +20,16 @@ Try it out at [photoshot.app](https://photoshot.app)
 - 💰 [Stripe](https://stripe.com/) for payments
 - 👩‍🎨 [Flux](https://blackforestlabs.ai/) an open-source text-to-image generation model
 
+## 🚀 Quick Deploy
+
+**Deploy to Vercel (Recommended):**
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Pawfect-Pixels-App/photoshot1)
+
+For detailed deployment instructions, see:
+- [QUICKSTART.md](./QUICKSTART.md) - Get running in minutes
+- [DEPLOYMENT.md](./DEPLOYMENT.md) - Comprehensive deployment guide for all platforms
+
 ## Getting Started
 
 Install dependencies:

@@ -9,7 +9,13 @@
     "lint": "next lint",
     "postinstall": "prisma generate",
     "prisma:migrate:dev": "dotenv -e .env.local prisma migrate dev",
-    "vercel-build": "prisma generate && prisma migrate deploy && next build"
+    "prisma:migrate:deploy": "prisma migrate deploy",
+    "prisma:generate": "prisma generate",
+    "vercel-build": "prisma generate && prisma migrate deploy && next build",
+    "docker:build": "docker build -t photoshot .",
+    "docker:run": "docker run -p 3000:3000 --env-file .env.local photoshot",
+    "docker:compose:up": "docker-compose -f docker-compose.prod.yml up -d",
+    "docker:compose:down": "docker-compose -f docker-compose.prod.yml down"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.223.0",

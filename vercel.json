@@ -1,0 +1,22 @@
+{
+  "buildCommand": "yarn vercel-build",
+  "framework": "nextjs",
+  "functions": {
+    "api/**/*.ts": {
+      "memory": 3008,
+      "maxDuration": 60
+    }
+  },
+  "env": {
+    "DATABASE_URL": "@database_url",
+    "NEXTAUTH_URL": "@nextauth_url",
+    "S3_UPLOAD_KEY": "@s3_upload_key",
+    "S3_UPLOAD_SECRET": "@s3_upload_secret",
+    "S3_UPLOAD_BUCKET": "@s3_upload_bucket",
+    "S3_UPLOAD_REGION": "@s3_upload_region",
+    "REPLICATE_API_TOKEN": "@replicate_api_token",
+    "REPLICATE_USERNAME": "@replicate_username",
+    "NEXT_PUBLIC_REPLICATE_INSTANCE_TOKEN": "@next_public_replicate_instance_token",
+    "SECRET": "@secret"
+  }
+}
