@@ -36,7 +36,7 @@ const theme = extendTheme({
     },
   },
   fonts: {
-    heading: `'${inter.style.fontFamily}', sans-serif`,
+    heading: `'${inter.style.fontFamily}', YuseiMagic`,
     body: `'${inter.style.fontFamily}', sans-serif`,
   },
   components: {
