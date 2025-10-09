@@ -37,9 +37,16 @@ export const createZipFolder = async (urls: string[], project: Project) => {
   const buffers = await Promise.all(buffersPromises);
   const folder = zip.folder(project.id);
 
+  if (!folder) {
+    throw new Error("Failed to create zip folder for project: " + project.id);
+  }
+
   buffers.forEach((buffer, i) => {
     const filename = urls[i].split("/").pop();
-    folder!.file(filename!, buffer, { binary: true });
+    if (!filename) {
+      throw new Error(`Could not extract filename from URL: ${urls[i]}`);
+    }
+    folder.file(filename, new Uint8Array(buffer), { binary: true });
   });
 
   const zipContent = await zip.generateAsync({ type: "nodebuffer" });

@@ -20,5 +20,5 @@ services:
       - "1080:80"
       - "25:25"
 volumes:
-  postgresql:
+  postgresql: 
   postgresql_data:

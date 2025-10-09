@@ -4,19 +4,19 @@ import { extendTheme } from "@chakra-ui/react";
 const theme = extendTheme({
   colors: {
     brand: {
-      50: "#FFFFFF",
+       50: "#FFFFFF",
       100: "#FFFFFF",
       200: "#FFFFFF",
-      300: "#FFFFFF",
-      400: "#DEFFEE",
-      500: "#B5FFD9",
-      600: "#7DFFBC",
-      700: "#45FF9F",
-      800: "#0DFF83",
-      900: "#00D467",
+      300: "#655793ff",
+      400: "#688d9bff",
+      500: "#81bcc7ff",
+      600: "#609a7cff",
+      700: "#4d5788ff",
+      800: "#253e62ff",
+      900: "#1d1263ff",
     },
     beige: {
-      50: "#D7D5D4",
+      180: "#f7f7f7ff",
       100: "#CDCACA",
       200: "#B9B6B5",
       300: "#A5A1A0",
@@ -36,7 +36,7 @@ const theme = extendTheme({
     },
   },
   fonts: {
-    heading: `'${inter.style.fontFamily}', YuseiMagic`,
+    heading: `'${inter.style.fontFamily}', Fredoka, sans-serif`,
     body: `'${inter.style.fontFamily}', sans-serif`,
   },
   components: {
@@ -47,7 +47,7 @@ const theme = extendTheme({
           bg: "brand.500",
           color: "blackAlpha.700",
           shadow: "lg",
-          borderWidth: "1px",
+          borderWidth: "3px",
           borderColor: "blackAlpha.100",
           _hover: {
             shadow: "md",
@@ -62,8 +62,8 @@ const theme = extendTheme({
           bg: "brand.500",
           color: "blackAlpha.700",
           shadow: "lg",
-          borderWidth: "1px",
-          borderColor: "blackAlpha.100",
+          borderWidth: "3px",
+          borderColor: "blackAlpha.700",
           _hover: {
             shadow: "md",
           },
