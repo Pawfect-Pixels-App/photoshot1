@@ -26,7 +26,10 @@ Try it out at [photoshot.app](https://photoshot.app)
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Pawfect-Pixels-App/photoshot1)
 
+> ⚠️ **Getting "Secret does not exist" error?** See [VERCEL_SETUP.md](./VERCEL_SETUP.md) for detailed Vercel deployment instructions.
+
 For detailed deployment instructions, see:
+- [VERCEL_SETUP.md](./VERCEL_SETUP.md) - Fix Vercel environment variable and secret issues
 - [QUICKSTART.md](./QUICKSTART.md) - Get running in minutes
 - [DEPLOYMENT.md](./DEPLOYMENT.md) - Comprehensive deployment guide for all platforms
 

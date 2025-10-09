@@ -49,11 +49,9 @@ cp .env.example .env.local
 
 Vercel is the easiest way to deploy Next.js applications.
 
-#### One-Click Deploy
+> **Important**: If you encounter an error like "Environment Variable 'DATABASE_URL' references Secret 'database_url', which does not exist", see the detailed setup guide: **[VERCEL_SETUP.md](./VERCEL_SETUP.md)**
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Pawfect-Pixels-App/photoshot1)
-
-#### Manual Deploy
+#### Quick Setup
 
 1. Install Vercel CLI:
    ```bash
@@ -65,28 +63,58 @@ Vercel is the easiest way to deploy Next.js applications.
    vercel login
    ```
 
-3. Deploy:
+3. Link your project:
    ```bash
-   vercel
+   vercel link
    ```
 
-4. Add environment variables in Vercel dashboard or via CLI:
+4. **Set up secrets** (choose one method):
+
+   **Method A - Automated Script:**
    ```bash
-   vercel env add DATABASE_URL
-   vercel env add NEXTAUTH_URL
-   # ... add all other environment variables
+   ./scripts/setup-vercel-secrets.sh
    ```
+
+   **Method B - Manual CLI:**
+   ```bash
+   vercel secrets add database_url
+   vercel secrets add nextauth_url
+   vercel secrets add s3_upload_key
+   vercel secrets add s3_upload_secret
+   vercel secrets add s3_upload_bucket
+   vercel secrets add s3_upload_region
+   vercel secrets add replicate_api_token
+   vercel secrets add replicate_username
+   vercel secrets add next_public_replicate_instance_token
+   vercel secrets add secret
+   ```
+
+   **Method C - Dashboard:**
+   - Go to your project in Vercel Dashboard
+   - Navigate to Settings → Environment Variables
+   - Add each variable and link to corresponding secret
 
 5. Deploy to production:
    ```bash
    vercel --prod
    ```
 
+#### Understanding Vercel Secrets
+
+The `vercel.json` file uses **Vercel secrets** (syntax: `@secret_name`) for sensitive values. These secrets:
+- Are encrypted and stored securely
+- Can be reused across projects
+- Are not exposed in logs or public settings
+- Must be created before deployment
+
+See [VERCEL_SETUP.md](./VERCEL_SETUP.md) for detailed instructions on creating and managing secrets.
+
 #### Important Notes for Vercel
 
 - Database migrations run automatically via `vercel-build` script
-- Add all environment variables in the Vercel dashboard under Project Settings → Environment Variables
+- All environment variables must be configured before deployment
 - Set `NEXTAUTH_URL` to your Vercel deployment URL (e.g., `https://your-app.vercel.app`)
+- Use connection pooling for PostgreSQL (Supabase "Session pooler" or Neon recommended)
 
 ### Option 2: Docker
 
