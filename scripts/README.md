@@ -4,6 +4,53 @@ Utility scripts for deploying and managing Photoshot.
 
 ## Scripts
 
+### Vercel Deployment Scripts
+
+#### setup-vercel-secrets.sh
+
+Automated script to create all required Vercel secrets for deployment.
+
+**Usage:**
+```bash
+./scripts/setup-vercel-secrets.sh
+```
+
+**What it does:**
+- Guides you through creating all required Vercel secrets
+- Prompts for values for each secret
+- Provides examples and descriptions for each secret
+- Runs `vercel secrets add` for each secret
+
+**Prerequisites:**
+- Vercel CLI installed (`npm i -g vercel`)
+- Logged in to Vercel (`vercel login`)
+- Project linked to Vercel (`vercel link`)
+
+**See also:** [VERCEL_SETUP.md](../VERCEL_SETUP.md) for detailed deployment guide
+
+#### check-vercel-setup.sh
+
+Diagnostic script to check if your Vercel project is properly configured.
+
+**Usage:**
+```bash
+./scripts/check-vercel-setup.sh
+```
+
+**What it does:**
+- Checks if Vercel CLI is installed
+- Verifies you're logged in
+- Confirms project is linked
+- Lists which secrets are missing
+- Provides next steps to fix issues
+
+**Use this when:**
+- Getting "Secret does not exist" errors
+- Want to verify setup before deploying
+- Troubleshooting deployment issues
+
+---
+
 ### deploy.sh
 
 Automated deployment script for self-hosted environments.
@@ -94,6 +141,20 @@ Feel free to add your own deployment scripts:
 
 ## Troubleshooting
 
+### Vercel "Secret does not exist" error
+
+Run the diagnostic script:
+```bash
+./scripts/check-vercel-setup.sh
+```
+
+Then create missing secrets:
+```bash
+./scripts/setup-vercel-secrets.sh
+```
+
+See [VERCEL_SETUP.md](../VERCEL_SETUP.md) for detailed help.
+
 ### "Permission denied" error
 
 Make scripts executable:
@@ -114,3 +175,32 @@ npm install -g yarn
 2. Check PORT matches your configuration
 3. Verify health endpoint is accessible
 4. Check firewall settings
+
+## Quick Reference
+
+**First time deploying to Vercel?**
+```bash
+# 1. Install and setup Vercel CLI
+npm i -g vercel
+vercel login
+vercel link
+
+# 2. Check what's missing
+./scripts/check-vercel-setup.sh
+
+# 3. Create secrets
+./scripts/setup-vercel-secrets.sh
+
+# 4. Deploy
+vercel --prod
+```
+
+**Self-hosted deployment?**
+```bash
+./scripts/deploy.sh
+```
+
+**Check if app is healthy?**
+```bash
+./scripts/health-check.sh
+```
