@@ -96,3 +96,20 @@ yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## VS Code Tasks
+
+If you're using Visual Studio Code, you can use the predefined tasks in `.vscode/tasks.json` to streamline your development workflow:
+
+- **Install Dependencies**: Install all project dependencies with `yarn install`
+- **Start Development Server**: Start the Next.js development server
+- **Build Application**: Build the production application
+- **Start Production Server**: Start the production server (builds first)
+- **Run Linter**: Run ESLint to check code quality
+- **Generate Prisma Client**: Generate the Prisma client
+- **Run Prisma Migrations (Dev)**: Run database migrations in development
+- **Start Docker Services**: Start PostgreSQL and MailDev using Docker Compose
+- **Stop Docker Services**: Stop Docker services
+- **Setup Development Environment**: Run all setup tasks in sequence (dependencies, Docker, Prisma)
+
+To run a task, open the Command Palette (`Ctrl+Shift+P` or `Cmd+Shift+P`), type "Run Task", and select the task you want to execute.
