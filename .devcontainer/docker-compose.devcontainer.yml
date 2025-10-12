@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  app:
+    image: mcr.microsoft.com/devcontainers/typescript-node:18
+    volumes:
+      - ..:/workspace:cached
+    command: sleep infinity
+    network_mode: service:postgres
+    environment:
+      - NODE_ENV=development
+      - DATABASE_URL=postgresql://photoshot:photoshot@localhost:5432/photoshot
+      - NEXTAUTH_URL=http://localhost:3000
+      - EMAIL_SERVER=smtp://localhost:25
+      - NODE_TLS_REJECT_UNAUTHORIZED=0
+    depends_on:
+      - postgres
+      - maildev
