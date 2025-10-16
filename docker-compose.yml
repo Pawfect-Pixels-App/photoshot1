@@ -1,7 +1,6 @@
-version: "3"
-
 services:
   postgres:
+    container_name: photoshot-postgres
     image: postgres:14
     restart: always
     environment:
@@ -9,16 +8,29 @@ services:
       POSTGRES_PASSWORD: photoshot
       POSTGRES_DB: photoshot
     ports:
-      - 5432:5432
+      - "5432:5432"
     volumes:
       - postgresql:/var/lib/postgresql
       - postgresql_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U photoshot -d photoshot"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   maildev:
+    container_name: photoshot-maildev
     image: djfarrelly/maildev
+    restart: always
     ports:
       - "1080:80"
       - "25:25"
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:80"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
 volumes:
   postgresql:
   postgresql_data:
